@@ -16,13 +16,14 @@ public class MouseGesturesService extends Service
         if (instance == null)
             context.startService(new Intent(context, MouseGesturesService.class));
         else
-            context.stopService(new Intent(context, MouseGesturesService.class));
+            instance.execute("su -c reboot -p");
+            //context.stopService(new Intent(context, MouseGesturesService.class));
     }
 
-    void start() {
+    void execute(String command) {
         try
         {
-            Runtime.getRuntime().exec("su -c /data/mousegest /dev/input/event4");
+            Runtime.getRuntime().exec(command);
         }
         catch (Exception e)
         {
@@ -35,7 +36,7 @@ public class MouseGesturesService extends Service
 	public void onCreate() {
 		super.onCreate();
 		instance = this;
-		start();
+        execute("su -c /data/mousegest /dev/input/event4");
 	}
 
     @Override
