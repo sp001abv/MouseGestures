@@ -1,7 +1,5 @@
 package com.sp.mousegestures;
 
-//import android.accessibilityservice.AccessibilityService;
-//import android.view.accessibility.AccessibilityEvent;
 import android.app.*;
 import android.os.*;
 import android.content.*;
@@ -50,36 +48,5 @@ public class MouseGesturesService extends Service
     public IBinder onBind(Intent intent) {
         return null;
     }
-
-/*
-    void recents() {
-        try {
-            performGlobalAction(GLOBAL_ACTION_RECENTS);
-        }
-        catch (Exception e)
-        {
-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
-        }
-    }
-
-    @Override
-    protected boolean onGesture(int gestureId) {
-        return super.onGesture(gestureId);
-    }
-
-    @Override
-    public void onAccessibilityEvent(AccessibilityEvent accessibilityEvent) {
-        if (accessibilityEvent.getEventType() == AccessibilityEvent.TYPE_TOUCH_INTERACTION_START)
-        {
-            recents();
-        }
-
-    }
-
-    @Override
-    public void onInterrupt() {
-
-    }
-*/
 }
 
