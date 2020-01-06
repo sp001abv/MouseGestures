@@ -16,7 +16,7 @@ public class MouseGesturesService extends Service
         if (instance == null)
             context.startService(new Intent(context, MouseGesturesService.class));
         else
-            instance.execute("su -c reboot -p");
+            instance.execute("su -c /data/shutdown");
             //context.stopService(new Intent(context, MouseGesturesService.class));
     }
 
