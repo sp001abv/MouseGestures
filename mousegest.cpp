@@ -202,26 +202,26 @@ int main(int argc, char *argv[])
 					}
 				}
 				else if (action == ACTION_UP) {
-					if (moved(action_y, 4)) {
+					if (moved(action_y, 10)) {
                         action = ACTION_NONE;
                         action_time = ACTION_RESET_TIME;
                     }
-					else if (moved(action_x, 2)) {
+					else if (moved(action_x, 100)) {
 					    action = action_x > 0 ? ACTION_SWITCH_APP : ACTION_HOME;
 					}
 				}
 				else if (action == ACTION_SWITCH_APP || action == ACTION_HOME) {
-					if (moved(action_x, 32) || moved(action_y, 4)) {
+					if (moved(action_y, 10)) {
 					    action = ACTION_NONE;
 						action_time = ACTION_RESET_TIME;
 					}
 					else if (action == ACTION_SWITCH_APP) {
-					    if (e.code == REL_X && e.value < 0) {
+					    if (action_x < 0) {
 					        action = ACTION_KEY_SWITCH_APP;
 					    }
 					}
 					else if (action == ACTION_HOME) {
-					    if (e.code == REL_X && e.value > 0) {
+					    if (action_x > 0) {
 					        action = ACTION_KEY_HOME;
 					    }
 					}
