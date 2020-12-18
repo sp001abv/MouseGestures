@@ -14,33 +14,31 @@ public class MouseGesturesService extends Service
         if (instance == null)
             context.startService(new Intent(context, MouseGesturesService.class));
         else
-            instance.execute("su -c /data/shutdown");
-            //context.stopService(new Intent(context, MouseGesturesService.class));
+            context.stopService(new Intent(context, MouseGesturesService.class));
     }
 
-    void execute(String command) {
+    static void execute(Context context, String command) {
         try
         {
             Runtime.getRuntime().exec(command);
         }
         catch (Exception e)
         {
-            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-            toggle(getApplicationContext());
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 
     @Override
 	public void onCreate() {
-		super.onCreate();
-		instance = this;
-        execute("su -c /data/mousegest /dev/input/event4");
+        super.onCreate();
+        instance = this;
+        execute(getApplicationContext(), "/data/startmousegest.sh");
 	}
 
     @Override
     public void onDestroy() {
         instance = null;
-        Toast.makeText(getApplicationContext(), "stopped Mouse Gestures", Toast.LENGTH_SHORT).show();
+        execute(getApplicationContext(), "/data/stopmousegest.sh");
         super.onDestroy();
     }
 
