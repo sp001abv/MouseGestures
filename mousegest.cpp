@@ -190,7 +190,7 @@ int main(int argc, char *argv[])
 				if (e.code == BTN_LEFT) left_key = e.value;
 				if (e.code == BTN_MIDDLE) middle_key = e.value;
 				if (e.code == BTN_RIGHT) right_key = e.value;
-				if (middle_key && right_key) break;
+				if (left_key && middle_key && right_key) break;
 			}
 			else if (e.type == EV_REL) {
 				if (e.code == REL_X) action_x += e.value;
